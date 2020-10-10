@@ -1,0 +1,26 @@
+# Add our dependencies.
+import csv
+import os
+# Assign a variable to load a file from a path.
+file_to_load = os.path.join("Resources", "election_results.csv")
+# Assign a variable to save the file to a path.
+file_to_save = os.path.join("analysis", "election_analysis2.txt")
+
+# Open the election results and read the file.
+with open(file_to_load) as election_data:
+    file_reader = csv.reader(election_data)
+
+    # Read the header row.
+    headers = next(file_reader)
+
+    # Print each row in the CSV file.
+    for row in file_reader:
+        print(row)
+# Using the with statement open the file as a text file.
+outfile = open(file_to_save, "w")
+# Write some data to the file.
+outfile.write("Counties in the Election\n")
+outfile.write("------------------------\n")
+
+# Close the file
+outfile.close()        
